@@ -21,6 +21,22 @@ changed to make it useful in the real world, like changing the Marshal
 serialization to use JSON serialization instead, and for the subscribe mechanic
 not forcing the user to keep the process open indefinitely.
 
+The abstract model to think of is similar to an email system.  You have
+channels  which you can think of as mailing lists.  You have inboxes which can
+subscribe to channels.  Anything you publish to a channel all subscribed
+inboxes will receive a copy of.  When you consume a message it removes it from
+the inbox you are reading from.  You can setup all kinds of routing scenarios
+with this model.  Want a round robin, setup 1 inbox and have 8 processes
+consume the messages in that inbox.  Want each app to consume each message
+exactly once with guaranteed delivery, setup 8 inboxes so that each process
+get's it's own inbox.
+
+Something that would be useful for further work would be to add the capability
+to have inboxes subscribe to more than one channel
+
+I'm sure there are other ways you could expand the paradigm to add flexibility
+
+
 # Example usage
 
 to subscribe...
